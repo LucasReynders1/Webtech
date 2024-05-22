@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About Us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+ <!-- Navbar -->
+<nav class="w3-top">
+  <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="../../index.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+  </div>
+</nav>
+
+  <!-- Header -->
+  <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">About Us</h1>
+    <p class="w3-xlarge">Bjarni Heselmans, Emiel Mangelschots & Lucas Reynders</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w3-container">
+    <h1>Who We Are</h1>
+    <p>We are a team of three web development students at Howest University in Belgium. Our names are Bjarni Heselmans, Emiel Mangelschots, and Lucas Reynders. We are currently working on a project for our Webtechnologie course.</p>
+
+    <h1>Our Project</h1>
+    <p>Our project is a web application that measures and displays the sound level in decibels. We are using the Web Audio API to capture audio input from the user's microphone and calculate the sound level in real-time. We are also using the W3.CSS framework to style our web application and make it responsive.</p>
+
+    <h1>Our Goals</h1>
+    <p>Our goal is to create a user-friendly and accurate web application that can be used to measure sound levels in various environments. We hope that our application can help people make informed decisions about noise exposure and protect their hearing.</p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+    <p>Website founded est 2024.</p>
+  </footer>
+
+  <script>
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+  </script>
+</body>
+</html>
