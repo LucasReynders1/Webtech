@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Webtechnologie Project</title>
+  <title> Webtechnology project Home</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -10,21 +10,20 @@
 </head>
 <body>
 
-<!-- Navbar -->
+  <!-- Navbar -->
 <nav class="w3-top">
   <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="../Website.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="about.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Over ons</a>
+    <a href="website.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="website.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-padding-large">About</a>
   </div>
 </nav>
-
-    <!-- Navbar on small screens -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-      <a href="#" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="about.html" class="w3-bar-item w3-button w3-padding-large">About</a>
-    </div>
-  </nav>
 
   <!-- Header -->
   <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
@@ -34,40 +33,41 @@
   </header>
 
   <!-- Main Content -->
-<main class="w3-container">
-  <!-- First Grid -->
-  <section class="w3-row-padding w3-padding-64 w3-container">
+  <main class="w3-container">
+    <!-- First Grid -->
+    <section class="w3-row-padding w3-padding-64 w3-container">
       <div class="w3-content">
-          <div class="w3-twothird">
-              <h1>DB Meter</h1>
-              <p class="w3-text-grey">A sound level meter or sound meter is a measuring instrument used to measure the sound level.
-                 The result of the measurements is presented in decibels. The read value of a sound meter shows a limited correlation 
-                 with the loudness or noise of the sound, as a person may experience; this depends on many other factors.</p>
-          </div>
+        <div class="w3-twothird">
+          <h1>DB meter</h1>
+          <p class="w3-text-grey">Een geluidsniveaumeter of geluidsmeter is een meetinstrument om het geluidsniveau te meten. 
+            Het resultaat van de metingen wordt gepresenteerd in decibel. 
+            De afgelezen waarde van een geluidsmeter vertoont een beperkte correlatie met de luidheid of geluidshinder van het geluid,
+             zoals een persoon die kan ervaren; die hangt af van veel andere factoren.</p>
+        </div>
       </div>
-  </section>
+    </section>
 
-  <!-- Second Grid -->
-  <section class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <!-- Second Grid -->
+    <section class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
       <!-- content here -->
-  </section>
-</main>
+    </section>
+  </main>
 
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity">
-  <p>Website founded est 2024.</p>
-</footer>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity"> 
+    <p>Website founded est 2024.</p>
+  </footer>
 
-<script>
-  // Used to toggle the menu on small screens when clicking on the menu button
-  function myFunction() {
+  <script>
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
       var x = document.getElementById("navDemo");
       if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
-      } else {
-          x.className = x.className.replace(" w3-show", "");
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
       }
-  }
-</script>
+    }
+  </script>
 </body>
 </html>
