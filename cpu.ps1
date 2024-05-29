@@ -1,5 +1,5 @@
 # Your endpoint to make POST request to
-$SERVER_URL = 'https://server-of-bjarni.pxl.bjth.xyz/Vieuw Data'
+$SERVER_URL = 'https://server-of-bjarni.pxl.bjth.xyz/Vieuw_Data/cpu_freq'
 
 function Get-CpuFreq {
     Write-Output 'Fetching data...'
