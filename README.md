@@ -7,11 +7,11 @@
 
 ## Sources ##
 > W3schools:
->  - We used W3schools to startup our own website template with html language.
+> - We used W3schools to startup our own website template with html language.
 
 > Bryan Honof:
->  - Internal help for building out own website.
->  - Codes on his github.
+> - Internal help for building out own website.
+> - Codes on his github.
 
 # Scoring Points #
 - [x] The student must be able to show utilization of Git for version control.
