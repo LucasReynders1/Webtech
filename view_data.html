@@ -1,17 +1,16 @@
-<!-- website.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title> Webtechnology project Home</title>
+  <title>View data</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="styles.css"> <!-- separate CSS file -->
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-<nav class="w3-top">
+ <!-- Navbar -->
+ <nav class="w3-top">
   <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="Website.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
@@ -29,37 +28,59 @@
 
   <!-- Header -->
   <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Webtechnologie</h1>
-    <p class="w3-xlarge">Bjarni Heselmans, Emiel Mangelschots & Lucas Reynders</p>
-    <a href="view_data.html" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Vieuw Data</a>
+    <h1 class="w3-margin w3-jumbo">View data</h1>
+    <p class="w3-xlarge">In the next grapich we show the temparature of the local CPU from Bjarni</p>
   </header>
 
   <!-- Main Content -->
-  <main class="w3-container">
-    <!-- First Grid -->
-    <section class="w3-row-padding w3-padding-64 w3-container">
-      <div class="w3-content">
-        <div class="w3-twothird">
-          <h1>DB meter</h1>
-          <p class="w3-text-grey">Een geluidsniveaumeter of geluidsmeter is een meetinstrument om het geluidsniveau te meten. 
-            Het resultaat van de metingen wordt gepresenteerd in decibel. 
-            De afgelezen waarde van een geluidsmeter vertoont een beperkte correlatie met de luidheid of geluidshinder van het geluid,
-             zoals een persoon die kan ervaren; die hangt af van veel andere factoren.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Second Grid -->
-    <section class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-      <!-- content here -->
-    </section>
+<main class="w3-container">
+    <h1>Grafiek</h1>
+    <canvas id="cpuTempChart"></canvas>
+  
+    <script>
+      // Haal de data op van de GitHub repository
+      fetch('https://github.com/BjarniHeselmans/Webtech/blob/master/cpu.ps1')
+        .then(response => response.text())
+        .then(data => {
+          // Parse de data naar een array van temperatuurwaarden
+          const temps = data.split('\n').map(line => parseFloat(line));
+  
+          // Maak een Chart.js grafiek
+          const ctx = document.getElementById('cpuTempChart').getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: temps.map((temp, index) => `Sample ${index + 1}`),
+              datasets: [{
+                label: 'CPU Temperatuur',
+                data: temps,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'CPU Temperatuur'
+              },
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+    </script>
   </main>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-center w3-opacity"> 
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
     <p>Website founded est 2024.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     // Used to toggle the menu on small screens when clicking on the menu button
     function myFunction() {
