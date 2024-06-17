@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>View data</title>
+  <title>Frequentie</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -28,8 +28,8 @@
 
   <!-- Header -->
   <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">View data</h1>
-    <p class="w3-xlarge">In the next grapich we show the temparature of the local CPU from Bjarni</p>
+    <h1 class="w3-margin w3-jumbo">Frequence grabber</h1>
+    <p class="w3-xlarge">Grabbing the frequence....</p>
   </header>
 
   <!-- Main Content -->
@@ -38,40 +38,60 @@
     <canvas id="cpuFreqChart"></canvas>
 
     <script>
-      // Verkrijg de data van de frequentie.html pagina
-      fetch('frequentie.html')
-        .then(response => response.text())
-        .then(data => {
-          // Parse de data naar een array van frequentiewaarden
-          const freqs = data.split('\n').map(line => parseFloat(line));
+      // Verkrijg de huidige CPU-frequentie
+      function getCPUFrequency() {
+        return performance.frequency;
+      }
 
-          // Maak een Chart.js grafiek
-          const ctx = document.getElementById('cpuFreqChart').getContext('2d');
-          new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: freqs.map((freq, index) => `Sample ${index + 1}`),
-              datasets: [{
-                label: 'CPU Frequentie',
-                data: freqs,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-              }]
-            },
-            options: {
-              title: {
-                display:true,
-                text: 'CPU Frequentie'
-              },
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
+      // Maak een array om de frequentiewaarden in op te slaan
+      let freqs = [];
+
+      // Maak een Chart.js grafiek
+      const ctx = document.getElementById('cpuFreqChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'CPU Frequentie',
+            data: [],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'CPU Frequentie'
+          },
+          scales: {
+            y: {
+              beginAtZero: true
             }
-          });
-        });
+          }
+       }
+      });
+
+      // Update de grafiek elke seconde met de huidige CPU-frequentie
+      setInterval(() => {
+        const freq = getCPUFrequency();
+        freqs.push(freq);
+        chart.data.labels.push(`Sample ${chart.data.labels.length + 1}`);
+        chart.data.datasets[0].data.push(freq);
+        chart.update();
+      }, 1000);
+
+      // Sla de frequentiewaarden op in een bestand
+      setInterval(() => {
+        const freqString = freqs.join('\n');
+        const blob = new Blob([freqString], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'frequentie.txt';
+        a.click();
+      }, 10000); // Sla elke 10 seconden de frequentiewaarden op
     </script>
   </main>
 
